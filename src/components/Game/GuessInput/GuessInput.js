@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function GuessInput({ addGuesses }) {
+export default function GuessInput({ addGuesses, isDisabled }) {
   const [inputVal, setInputVal] = useState("");
 
   return (
@@ -24,6 +24,7 @@ export default function GuessInput({ addGuesses }) {
         id="guess-input"
         type="text"
         title="Input must be at least 5 characters long"
+        disabled={isDisabled}
         required
       />
     </form>

@@ -5,7 +5,7 @@ import LetterCell from "../LetterCell/LetterCell";
 
 function GuessesList({ guessesList, answer }) {
   return (
-    <div class="guess-results">
+    <div className="guess-results">
       {range(0, NUM_OF_GUESSES_ALLOWED).map((_, index) => {
         const value = guessesList[index] ? guessesList[index].value : "";
         return <LetterCell key={index} guess={value} answer={answer} />;

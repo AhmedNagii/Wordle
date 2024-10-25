@@ -9,7 +9,6 @@ function LetterCell({ guess, answer }) {
   return (
     <p className="guess">
       {range(0, 5).map((_, i) => {
-        debugger;
         const className = result ? result[i]?.status : "";
         return (
           <span key={i} className={`cell ${className}`}>
