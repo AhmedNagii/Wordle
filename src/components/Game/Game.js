@@ -8,22 +8,23 @@ import GuessInput from "./GuessInput/GuessInput";
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
 
 function Game() {
   const [guessesList, setGuessesList] = React.useState([]);
   const [gameResult, setGameResult] = React.useState(null);
+  const [answer, setAnswer] = React.useState(() => sample(WORDS));
   function addGuesses(word) {
     const newList = [...guessesList, { value: word, id: Math.random() }];
     const finalRes =
-      word === answer
-        ? "CORRECT"
-        : newList.length === 6 && gameResult === null
-        ? "WRONG"
-        : null;
+    word === answer
+    ? "CORRECT"
+    : newList.length === 6 && gameResult === null
+    ? "WRONG"
+    : null;
     setGameResult(finalRes);
     setGuessesList(newList);
   }
+  console.info({ answer });
 
   return (
     <>
@@ -32,6 +33,7 @@ function Game() {
           onClick={() => {
             setGuessesList([]);
             setGameResult(null);
+            setAnswer(sample(WORDS));
           }}
           className={"restart-Btn"}
         >
