@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-export default function GuessInput() {
+export default function GuessInput({ addGuesses }) {
   const [inputVal, setInputVal] = useState("");
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        addGuesses(inputVal);
         setInputVal("");
       }}
       className="guess-input-wrapper"
