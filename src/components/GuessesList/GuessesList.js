@@ -7,11 +7,15 @@ function GuessesList({ guessesList }) {
     <div class="guess-results">
       {range(0, NUM_OF_GUESSES_ALLOWED).map((_, index) => {
         return (
-          <p class="guess">
+          <p key={index} class="guess">
             {range(0, 5).map((_, i) => {
               const currentWord = guessesList[index];
               const letter = currentWord ? currentWord.value[i] : "";
-              return <span key={i} className="cell">{letter}</span>;
+              return (
+                <span key={i} className="cell">
+                  {letter}
+                </span>
+              );
             })}
           </p>
         );
