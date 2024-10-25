@@ -1,24 +1,14 @@
 import React from "react";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import { range } from "../../utils";
+import LetterCell from "../LetterCell/LetterCell";
 
-function GuessesList({ guessesList }) {
+function GuessesList({ guessesList, answer }) {
   return (
     <div class="guess-results">
       {range(0, NUM_OF_GUESSES_ALLOWED).map((_, index) => {
-        return (
-          <p key={index} class="guess">
-            {range(0, 5).map((_, i) => {
-              const currentWord = guessesList[index];
-              const letter = currentWord ? currentWord.value[i] : "";
-              return (
-                <span key={i} className="cell">
-                  {letter}
-                </span>
-              );
-            })}
-          </p>
-        );
+        const value = guessesList[index] ? guessesList[index].value : "";
+        return <LetterCell key={index} guess={value} answer={answer} />;
       })}
     </div>
   );
